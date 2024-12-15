@@ -11,6 +11,8 @@ const defaultCollectionLabels = {
     singular: 'Post',
   },
 }
+// Define a type for the valid collection keys
+type CollectionKey = keyof typeof defaultCollectionLabels;
 
 export const PageRange: React.FC<{
   className?: string
@@ -39,8 +41,8 @@ export const PageRange: React.FC<{
   if (totalDocs && indexEnd > totalDocs) indexEnd = totalDocs
 
   const { plural, singular } =
-    collectionLabelsFromProps || defaultCollectionLabels[collection || ''] || defaultLabels || {}
-
+  collectionLabelsFromProps || defaultCollectionLabels[collection as CollectionKey] || defaultLabels || {};
+  
   return (
     <div className={[className, 'font-semibold'].filter(Boolean).join(' ')}>
       {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}

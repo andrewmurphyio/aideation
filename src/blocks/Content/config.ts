@@ -9,6 +9,12 @@ import {
 
 import { link } from '@/fields/link'
 
+// Define the type for the object containing enableLink
+interface AdminConditionParams {
+  enableLink: boolean;
+}
+
+
 const columnFields: Field[] = [
   {
     name: 'size',
@@ -55,7 +61,7 @@ const columnFields: Field[] = [
   link({
     overrides: {
       admin: {
-        condition: (_, { enableLink }) => Boolean(enableLink),
+        condition: (_: unknown, { enableLink }: AdminConditionParams) => Boolean(enableLink),
       },
     },
   }),

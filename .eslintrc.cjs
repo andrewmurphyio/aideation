@@ -51,8 +51,8 @@ module.exports = {
           'jsdoc/require-returns-description': 'off',
           '@typescript-eslint/no-misused-promises': 'error',
           '@typescript-eslint/no-floating-promises': 'error',
+          '@typescript-eslint/no-explicit-any': 'off',
         },
       },
     ],
   }
-  

@@ -1,8 +1,5 @@
-/* eslint-disable react/button-has-type */
-import type { ButtonProps } from '@/components/ui/button'
-
 import { buttonVariants } from '@/components/ui/button'
-import { cn } from 'src/utilities/cn'
+import { cn } from '../../utilities/cn'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 import * as React from 'react'
 
@@ -30,8 +27,10 @@ PaginationItem.displayName = 'PaginationItem'
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<'button'>
+  size?: "default" | "icon" | "clear" | "lg" | "sm" | null | undefined // Adjust this line if 'size' is not part of ButtonProps
+} & React.ComponentProps<'button'>
+
+
 
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
   <button
@@ -55,7 +54,6 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     className={cn('gap-1 pl-2.5', className)}
-    size="default"
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
@@ -68,7 +66,6 @@ const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof Pag
   <PaginationLink
     aria-label="Go to next page"
     className={cn('gap-1 pr-2.5', className)}
-    size="default"
     {...props}
   >
     <span>Next</span>

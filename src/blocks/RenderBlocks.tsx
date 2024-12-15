@@ -1,4 +1,3 @@
-import { cn } from 'src/utilities/cn'
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
@@ -36,7 +35,7 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               return (
                 <div className="my-16" key={index}>
-                  {/* @ts-expect-error */}
+                  {/* @ts-expect-error ??? */}
                   <Block {...block} />
                 </div>
               )

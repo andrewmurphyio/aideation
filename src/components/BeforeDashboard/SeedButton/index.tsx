@@ -17,10 +17,10 @@ const SuccessMessage: React.FC = () => (
 export const SeedButton: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [seeded, setSeeded] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<Error | null>(null)
 
   const handleClick = useCallback(
-    async (e) => {
+    async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
 
       if (seeded) {
@@ -65,7 +65,7 @@ export const SeedButton: React.FC = () => {
           },
         )
       } catch (err) {
-        setError(err)
+        setError(err as unknown as Error)
       }
     },
     [loading, seeded, error],

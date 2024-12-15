@@ -125,7 +125,7 @@ export const Pages: CollectionConfig<'pages'> = {
   hooks: {
     afterChange: [revalidatePage],
     beforeChange: [populatePublishedAt],
-    beforeDelete: [revalidateDelete],
+    beforeDelete: [revalidateDelete as unknown as () => void],
   },
   versions: {
     drafts: {

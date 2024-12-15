@@ -18,10 +18,10 @@ import { countryOptions } from './options'
 
 export const Country: React.FC<
   CountryField & {
-    control: Control<FieldValues, any>
+    control: Control<FieldValues, unknown>
     errors: Partial<
       FieldErrorsImpl<{
-        [x: string]: any
+        [x: string]: unknown
       }>
     >
   }
@@ -39,7 +39,7 @@ export const Country: React.FC<
           const controlledValue = countryOptions.find((t) => t.value === value)
 
           return (
-            <Select onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
+            <Select onValueChange={(val: string) => onChange(val)} value={controlledValue?.value}>
               <SelectTrigger className="w-full" id={name}>
                 <SelectValue placeholder={label} />
               </SelectTrigger>

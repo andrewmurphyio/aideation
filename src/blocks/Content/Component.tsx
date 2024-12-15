@@ -1,4 +1,4 @@
-import { cn } from 'src/utilities/cn'
+import { cn } from '../../utilities/cn'
 import React from 'react'
 import RichText from '@/components/RichText'
 
@@ -29,11 +29,15 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
                   'md:col-span-2': size !== 'full',
                 })}
-                key={index}
-              >
+                key={index}>
                 {richText && <RichText data={richText} enableGutter={false} />}
 
-                {enableLink && <CMSLink {...link} />}
+                {enableLink && (
+                  <CMSLink
+                    {...link}
+                    appearance={link?.appearance ?? undefined} // Ensure appearance is undefined if null
+                  />
+                )}
               </div>
             )
           })}

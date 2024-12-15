@@ -3,7 +3,7 @@ import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
 
 import { useRouter } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm, FormProvider, SubmitHandler, UseFormRegister, FieldErrors, Control, FieldValues } from 'react-hook-form'
 import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
@@ -29,6 +29,15 @@ export type FormBlockType = {
   form: FormType
   introContent?: SerializedEditorState
 }
+
+interface FieldProps {
+  form: FormType;
+  control: Control<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  register: UseFormRegister<FieldValues>;
+  // Add other props as needed
+}
+
 
 export const FormBlock: React.FC<
   {
@@ -137,12 +146,12 @@ export const FormBlock: React.FC<
           {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
-            <form id={formID} onSubmit={handleSubmit(onSubmit)}>
+            <form id={formID} onSubmit={handleSubmit(onSubmit as unknown as SubmitHandler<Data>)}>
               <div className="mb-4 last:mb-0">
                 {formFromProps &&
                   formFromProps.fields &&
                   formFromProps.fields?.map((field, index) => {
-                    const Field: React.FC<any> = fields?.[field.blockType]
+                    const Field: React.FC<FieldProps> = fields?.[field.blockType as  "message" | "checkbox" | "country" | "email" |  "select" | "state" | "textarea" | "text" ] as unknown as React.FC<FieldProps>
                     if (Field) {
                       return (
                         <div className="mb-6 last:mb-0" key={index}>
