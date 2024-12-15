@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import IdeaCard from './IdeaCard'
+import { BuyMeACoffee } from './BuyMeACoffee'
 
 interface Idea {
   id: number
@@ -83,15 +84,9 @@ const IdeaGenerator: React.FC = () => {
     }
   }
 
-  const handleFeedback = (
-    idea: Idea,
-    feedback: 'like' | 'superlike' | 'dislike'
-  ) => {
+  const handleFeedback = (idea: Idea, feedback: 'like' | 'superlike' | 'dislike') => {
     if (feedback === 'like' || feedback === 'superlike') {
-      setLikedIdeas((prev) => [
-        ...prev,
-        { ...idea, superliked: feedback === 'superlike' },
-      ])
+      setLikedIdeas((prev) => [...prev, { ...idea, superliked: feedback === 'superlike' }])
     } else if (feedback === 'dislike') {
       setDislikedIdeas((prev) => [...prev, idea])
     }
@@ -108,6 +103,7 @@ const IdeaGenerator: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row">
+      <BuyMeACoffee />
       <div className="flex-1 p-4">
         <div className="flex flex-col md:flex-row items-center mb-4">
           <label htmlFor="existingIdeasText" className="mr-2 font-semibold">
@@ -141,76 +137,57 @@ const IdeaGenerator: React.FC = () => {
           disabled={loading}
           className={`mx-4 mt-4 px-6 py-2 ${
             loading ? 'bg-blue-300' : 'bg-blue-500 hover:bg-blue-600'
-          } text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all flex items-center`}
-        >
+          } text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all flex items-center`}>
           {loading && (
             <svg
               className="animate-spin h-5 w-5 mr-3 text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <circle
                 className="opacity-25"
                 cx="12"
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
+                strokeWidth="4"></circle>
               <path
                 className="opacity-75"
                 fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 .004 5.373 0 12h4z"
-              ></path>
+                d="M4 12a8 8 0 018-8V0C5.373 0 .004 5.373 0 12h4z"></path>
             </svg>
           )}
           {loading ? 'Generating...' : 'Generate Ideas'}
         </button>
         <div>
           {ideas.map((idea, index) => (
-            <IdeaCard
-              key={index}
-              idea={idea}
-              onFeedback={handleFeedback}
-              disabled={loading}
-            />
+            <IdeaCard key={index} idea={idea} onFeedback={handleFeedback} disabled={loading} />
           ))}
         </div>
       </div>
       <div className="flex-1 p-4 border-t md:border-t-0 md:border-l border-gray-300">
         <h2 className="text-xl font-bold mb-4">Liked Ideas</h2>
         {sortedLikedIdeas.map((idea, index) => (
-          <div
-            key={index}
-            className="idea-card flex justify-between items-center"
-          >
+          <div key={index} className="idea-card flex justify-between items-center">
             <p>
               {idea.text} {idea.superliked && '🌟'}
             </p>
             <button
               onClick={() => removeLikedIdea(idea.id)}
               className="text-red-500 hover:text-red-700"
-              disabled={loading}
-            >
+              disabled={loading}>
               Remove
             </button>
           </div>
         ))}
         <h2 className="text-xl font-bold mt-8 mb-4">Disliked Ideas</h2>
         {dislikedIdeas.map((idea, index) => (
-          <div
-            key={index}
-            className="idea-card flex justify-between items-center"
-          >
+          <div key={index} className="idea-card flex justify-between items-center">
             <p>{idea.text}</p>
             <button
-              onClick={() =>
-                setDislikedIdeas((prev) => prev.filter((i) => i.id !== idea.id))
-              }
+              onClick={() => setDislikedIdeas((prev) => prev.filter((i) => i.id !== idea.id))}
               className="text-red-500 hover:text-red-700"
-              disabled={loading}
-            >
+              disabled={loading}>
               Remove
             </button>
           </div>
