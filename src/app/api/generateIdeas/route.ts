@@ -13,6 +13,7 @@ const IdeaSchema = z.object({
 const RequestSchema = z.object({
   existingIdeas: z.array(z.string()),
   likedIdeas: z.array(IdeaSchema),
+  superLikedIdeas: z.array(IdeaSchema),
   dislikedIdeas: z.array(IdeaSchema),
   thingToIdea: z.string().min(1, 'thingToIdea cannot be empty'),
   numberOfIdeas: z.number().positive(),
@@ -32,6 +33,7 @@ export async function POST(request: NextRequest) {
               You are an AI assistant helping to generate new ideas for ${thingToIdea}.
               Existing ideas: ${existingIdeas.join(', ')}.
               Liked ideas: ${likedIdeas.map((idea: {text: string}) => idea.text).join(', ')}.
+              Super Liked ideas: ${likedIdeas.map((idea: {text: string}) => idea.text).join(', ')}.
               Disliked ideas: ${dislikedIdeas.map((idea: {text: string}) => idea.text).join(', ')}.
               Generate ${numberOfIdeas} new and unique ideas that are different from the existing ones.
               `

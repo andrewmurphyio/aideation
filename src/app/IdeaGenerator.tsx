@@ -67,7 +67,8 @@ const IdeaGenerator: React.FC = () => {
         },
         body: JSON.stringify({
           existingIdeas,
-          likedIdeas,
+          likedIdeas: likedIdeas.filter((idea) => !idea.superliked),
+          superLikedIdeas: likedIdeas.filter((idea) => idea.superliked),
           dislikedIdeas,
           thingToIdea,
           numberOfIdeas: 20,
@@ -106,9 +107,9 @@ const IdeaGenerator: React.FC = () => {
   )
 
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
       <div className="flex-1 p-4">
-        <div className="flex items-center mb-4">
+        <div className="flex flex-col md:flex-row items-center mb-4">
           <label htmlFor="existingIdeasText" className="mr-2 font-semibold">
             Existing Ideas
           </label>
@@ -121,7 +122,7 @@ const IdeaGenerator: React.FC = () => {
             disabled={loading}
           />
         </div>
-        <div className="flex items-center mb-4">
+        <div className="flex flex-col md:flex-row items-center mb-4">
           <label htmlFor="thingToIdea" className="mr-2 font-semibold">
             Thing to Generate Ideas For
           </label>
@@ -167,9 +168,9 @@ const IdeaGenerator: React.FC = () => {
           {loading ? 'Generating...' : 'Generate Ideas'}
         </button>
         <div>
-          {ideas.map((idea) => (
+          {ideas.map((idea, index) => (
             <IdeaCard
-              key={idea.id}
+              key={index}
               idea={idea}
               onFeedback={handleFeedback}
               disabled={loading}
@@ -177,11 +178,11 @@ const IdeaGenerator: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="flex-1 p-4 border-l border-gray-300">
+      <div className="flex-1 p-4 border-t md:border-t-0 md:border-l border-gray-300">
         <h2 className="text-xl font-bold mb-4">Liked Ideas</h2>
-        {sortedLikedIdeas.map((idea) => (
+        {sortedLikedIdeas.map((idea, index) => (
           <div
-            key={idea.id}
+            key={index}
             className="idea-card flex justify-between items-center"
           >
             <p>
@@ -197,9 +198,9 @@ const IdeaGenerator: React.FC = () => {
           </div>
         ))}
         <h2 className="text-xl font-bold mt-8 mb-4">Disliked Ideas</h2>
-        {dislikedIdeas.map((idea) => (
+        {dislikedIdeas.map((idea, index) => (
           <div
-            key={idea.id}
+            key={index}
             className="idea-card flex justify-between items-center"
           >
             <p>{idea.text}</p>

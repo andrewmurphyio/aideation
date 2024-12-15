@@ -23,14 +23,17 @@ body {
 
 .idea-card {
   @apply border border-gray-300 p-4 m-4 rounded-lg shadow-md transition-transform transform hover:scale-105;
+  @apply sm:p-3 sm:m-3; /* Adjust padding and margin for small screens */
 }
 
 .idea-card p {
   @apply text-lg;
+  @apply sm:text-base; /* Adjust text size for small screens */
 }
 
 .idea-card button {
   @apply m-1 px-4 py-2 text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all items-center;
+  @apply sm:px-3 sm:py-1; /* Adjust padding for small screens */
 
   &.like-button {
     @apply bg-green-500 hover:bg-green-600;
@@ -59,10 +62,11 @@ body {
 
 .textbox {
   @apply p-2 my-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
-  color: var(--foreground); /* Set text color to foreground */
-  background-color: var(--background); /* Ensure background is set */
+  color: var(--foreground);
+  background-color: var(--background);
+  @apply sm:p-1; /* Adjust padding for small screens */
 }
 
 .textbox::placeholder {
-  color: #555; /* Darker placeholder text for better readability */
+  color: #555;
 }
