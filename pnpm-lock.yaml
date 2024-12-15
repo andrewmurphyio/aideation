@@ -20,9 +20,27 @@ importers:
       '@payloadcms/next':
         specifier: ^3.7.0
         version: 3.7.0(@types/react@19.0.1)(graphql@16.9.0)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@payloadcms/plugin-form-builder':
+        specifier: ^3.7.0
+        version: 3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@payloadcms/plugin-nested-docs':
+        specifier: ^3.7.0
+        version: 3.7.0(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))
+      '@payloadcms/plugin-redirects':
+        specifier: ^3.7.0
+        version: 3.7.0(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))
+      '@payloadcms/plugin-search':
+        specifier: ^3.7.0
+        version: 3.7.0(@types/react@19.0.1)(graphql@16.9.0)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@payloadcms/plugin-seo':
+        specifier: ^3.7.0
+        version: 3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       '@payloadcms/richtext-lexical':
         specifier: ^3.7.0
         version: 3.7.0(edswh4wirwsqcndfitrgypeo6y)
+      '@payloadcms/ui':
+        specifier: ^3.7.0
+        version: 3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       '@vercel/analytics':
         specifier: ^1.4.1
         version: 1.4.1(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react@19.0.0)
@@ -50,12 +68,15 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      types:
+        specifier: link:@payloadcms/plugin-seo/types
+        version: link:@payloadcms/plugin-seo/types
       zod:
         specifier: ^3.24.1
         version: 3.24.1
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^3
+        specifier: ^3.2.0
         version: 3.2.0
       '@types/node':
         specifier: ^20
@@ -1086,6 +1107,37 @@ packages:
       graphql: ^16.8.1
       next: ^15.0.0
       payload: 3.7.0
+
+  '@payloadcms/plugin-form-builder@3.7.0':
+    resolution: {integrity: sha512-XbXjnHIcADBGb/UAErHCkEiddBKEPesFmLolE9hIml4ApVsDyTdGcZU+DT7QAtHEojNzBQC+WAucBg+YMOlgLQ==}
+    peerDependencies:
+      payload: 3.7.0
+      react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+      react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+
+  '@payloadcms/plugin-nested-docs@3.7.0':
+    resolution: {integrity: sha512-REcY1ysDoy/r5+to7k1LBM7bXv+jKbFp+pB+C+iGUQ+4e+BCZbiXu3CeLsCYFzK/0WV+47hcOELyFuYnyR8lOQ==}
+    peerDependencies:
+      payload: 3.7.0
+
+  '@payloadcms/plugin-redirects@3.7.0':
+    resolution: {integrity: sha512-2gYQ5OiRro6ySfL4ulWXl/D21SS+/ta4+5LY/xnpehFmXtI4RGp8PvjjMPIXdryG1s5rjIqvqMnBWjqtgXeDwQ==}
+    peerDependencies:
+      payload: 3.7.0
+
+  '@payloadcms/plugin-search@3.7.0':
+    resolution: {integrity: sha512-QNCi0hplogvmnM/pU6RVl/PQSbHyDEFFL9QqxUhnzGI+p0uzQzI0UM6powDQsZtJwprG94jmloiFRQorMY+oGg==}
+    peerDependencies:
+      payload: 3.7.0
+      react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+      react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+
+  '@payloadcms/plugin-seo@3.7.0':
+    resolution: {integrity: sha512-EztSWLuLRQbo8PCci7XBWk82QxfGBCQ1w0it1d1IdsSZHV5ztvL3AbQbHWn/2FmsnCSbi0HdYZEVLvGVwEiD1Q==}
+    peerDependencies:
+      payload: 3.7.0
+      react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+      react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
 
   '@payloadcms/richtext-lexical@3.7.0':
     resolution: {integrity: sha512-HsntsXim5lek7WUPytI0CskHH8zUkknqJnR8n9y9v4IZDsTR9dU7m2ToyXQTxeI3ZeMiZKhB/V/GgKcK/Ca7NA==}
@@ -4453,6 +4505,57 @@ snapshots:
       - monaco-editor
       - react
       - react-dom
+      - supports-color
+      - typescript
+
+  '@payloadcms/plugin-form-builder@3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
+    dependencies:
+      '@payloadcms/ui': 3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      escape-html: 1.0.3
+      payload: 3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - monaco-editor
+      - next
+      - supports-color
+      - typescript
+
+  '@payloadcms/plugin-nested-docs@3.7.0(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))':
+    dependencies:
+      payload: 3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+
+  '@payloadcms/plugin-redirects@3.7.0(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))':
+    dependencies:
+      payload: 3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+
+  '@payloadcms/plugin-search@3.7.0(@types/react@19.0.1)(graphql@16.9.0)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
+    dependencies:
+      '@payloadcms/next': 3.7.0(@types/react@19.0.1)(graphql@16.9.0)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@payloadcms/ui': 3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      payload: 3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - graphql
+      - monaco-editor
+      - next
+      - supports-color
+      - typescript
+
+  '@payloadcms/plugin-seo@3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
+    dependencies:
+      '@payloadcms/translations': 3.7.0
+      '@payloadcms/ui': 3.7.0(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      payload: 3.7.0(graphql@16.9.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - monaco-editor
+      - next
       - supports-color
       - typescript
 
