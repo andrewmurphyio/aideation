@@ -31,8 +31,8 @@ export async function POST(request: NextRequest) {
     const prompt = `
               You are an AI assistant helping to generate new ideas for ${thingToIdea}.
               Existing ideas: ${existingIdeas.join(', ')}.
-              Liked ideas: ${likedIdeas.map((idea: any) => idea.text).join(', ')}.
-              Disliked ideas: ${dislikedIdeas.map((idea: any) => idea.text).join(', ')}.
+              Liked ideas: ${likedIdeas.map((idea: {text: string}) => idea.text).join(', ')}.
+              Disliked ideas: ${dislikedIdeas.map((idea: {text: string}) => idea.text).join(', ')}.
               Generate ${numberOfIdeas} new and unique ideas that are different from the existing ones.
               `
 
