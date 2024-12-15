@@ -4,7 +4,6 @@ import IdeaCard from './IdeaCard'
 import { BuyMeACoffee } from './BuyMeACoffee'
 
 interface Idea {
-  id: number
   text: string
   superliked?: boolean
 }
@@ -18,7 +17,7 @@ const IdeaGenerator: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    const savedIdeas = localStorage.getItem('ideas')
+    const savedIdeas = localStorage.getItem('savedIdeas')
     if (savedIdeas) setIdeas(JSON.parse(savedIdeas))
 
     const savedLikedIdeas = localStorage.getItem('likedIdeas')
@@ -68,7 +67,8 @@ const IdeaGenerator: React.FC = () => {
         },
         body: JSON.stringify({
           existingIdeas,
-          likedIdeas,
+          likedIdeas: likedIdeas.filter((idea) => !idea.superliked),
+          superLikedIdeas: likedIdeas.filter((idea) => idea.superliked),
           dislikedIdeas,
           thingToIdea,
           numberOfIdeas: 20,
@@ -83,23 +83,17 @@ const IdeaGenerator: React.FC = () => {
     }
   }
 
-  const handleFeedback = (
-    idea: Idea,
-    feedback: 'like' | 'superlike' | 'dislike'
-  ) => {
+  const handleFeedback = (idea: Idea, feedback: 'like' | 'superlike' | 'dislike') => {
     if (feedback === 'like' || feedback === 'superlike') {
-      setLikedIdeas((prev) => [
-        ...prev,
-        { ...idea, superliked: feedback === 'superlike' },
-      ])
+      setLikedIdeas((prev) => [...prev, { ...idea, superliked: feedback === 'superlike' }])
     } else if (feedback === 'dislike') {
       setDislikedIdeas((prev) => [...prev, idea])
     }
-    setIdeas((prev) => prev.filter((i) => i.id !== idea.id))
+    setIdeas((prev) => prev.filter((i) => i.text !== idea.text))
   }
 
-  const removeLikedIdea = (id: number) => {
-    setLikedIdeas((prev) => prev.filter((idea) => idea.id !== id))
+  const removeLikedIdea = (text: string) => {
+    setLikedIdeas((prev) => prev.filter((idea) => idea.text !== text))
   }
 
   const sortedLikedIdeas = likedIdeas.sort(
@@ -140,76 +134,57 @@ const IdeaGenerator: React.FC = () => {
         <button
           onClick={generateIdeas}
           disabled={loading}
-          className={`button ${loading ? 'button-loading' : 'button-normal'}`}
-        >
+          className={`button ${loading ? 'button-loading' : 'button-normal'}`}>
           {loading && (
             <svg
               className="spinner"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <circle
                 className="opacity-25"
                 cx="12"
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
+                strokeWidth="4"></circle>
               <path
                 className="opacity-75"
                 fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 .004 5.373 0 12h4z"
-              ></path>
+                d="M4 12a8 8 0 018-8V0C5.373 0 .004 5.373 0 12h4z"></path>
             </svg>
           )}
           {loading ? 'Generating...' : 'Generate Ideas'}
         </button>
         <div>
-          {ideas.map((idea) => (
-            <IdeaCard
-              key={idea.id}
-              idea={idea}
-              onFeedback={handleFeedback}
-              disabled={loading}
-            />
+          {ideas?.map((idea, index) => (
+            <IdeaCard key={index} idea={idea} onFeedback={handleFeedback} disabled={loading} />
           ))}
         </div>
       </div>
       <div className="flex-item flex-item-border">
         <h2 className="heading">Liked Ideas</h2>
-        {sortedLikedIdeas.map((idea) => (
-          <div
-            key={idea.id}
-            className="idea-card-container"
-          >
+        {sortedLikedIdeas?.map((idea, index) => (
+          <div key={index} className="idea-card-container">
             <p>
               {idea.text} {idea.superliked && '🌟'}
             </p>
             <button
-              onClick={() => removeLikedIdea(idea.id)}
+              onClick={() => removeLikedIdea(idea.text)}
               className="remove-button"
-              disabled={loading}
-            >
+              disabled={loading}>
               Remove
             </button>
           </div>
         ))}
         <h2 className="heading heading-margin">Disliked Ideas</h2>
-        {dislikedIdeas.map((idea) => (
-          <div
-            key={idea.id}
-            className="idea-card-container"
-          >
+        {dislikedIdeas?.map((idea, index) => (
+          <div key={index} className="idea-card-container">
             <p>{idea.text}</p>
             <button
-              onClick={() =>
-                setDislikedIdeas((prev) => prev.filter((i) => i.id !== idea.id))
-              }
+              onClick={() => setDislikedIdeas((prev) => prev.filter((i) => i.text !== idea.text))}
               className="remove-button"
-              disabled={loading}
-            >
+              disabled={loading}>
               Remove
             </button>
           </div>

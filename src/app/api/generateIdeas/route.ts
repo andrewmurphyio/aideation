@@ -6,7 +6,6 @@ import { generateObject } from 'ai'
 import { z } from 'zod'
 
 const IdeaSchema = z.object({
-  id: z.number(),
   text: z.string(),
 })
 
