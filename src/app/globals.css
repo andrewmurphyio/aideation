@@ -34,30 +34,30 @@ body {
 .idea-card button {
   @apply m-1 px-4 py-2 text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all items-center;
   @apply sm:px-3 sm:py-1; /* Adjust padding for small screens */
+}
 
-  &.like-button {
-    @apply bg-green-500 hover:bg-green-600;
-  }
-  
-  &.like-button:disabled {
-    @apply bg-green-300 cursor-not-allowed;
-  }
-  
-  &.super-like-button {
-    @apply bg-purple-500 hover:bg-purple-600;
-  }
-  
-  &.super-like-button:disabled {
-    @apply bg-purple-300 cursor-not-allowed;
-  }
-  
-  &.dislike-button {
-    @apply bg-red-500 hover:bg-red-600;
-  }
-  
-  &.dislike-button:disabled {
-    @apply bg-red-300 cursor-not-allowed;
-  }
+.like-button {
+  @apply bg-green-500 hover:bg-green-600;
+}
+
+.like-button:disabled {
+  @apply bg-green-300 cursor-not-allowed;
+}
+
+.super-like-button {
+  @apply bg-purple-500 hover:bg-purple-600;
+}
+
+.super-like-button:disabled {
+  @apply bg-purple-300 cursor-not-allowed;
+}
+
+.dislike-button {
+  @apply bg-red-500 hover:bg-red-600;
+}
+
+.dislike-button:disabled {
+  @apply bg-red-300 cursor-not-allowed;
 }
 
 .textbox {
@@ -69,4 +69,52 @@ body {
 
 .textbox::placeholder {
   color: #555;
+}
+
+.flex-container {
+  @apply flex flex-col md:flex-row;
+}
+
+.flex-item {
+  @apply flex-1 p-4;
+}
+
+.flex-item-border {
+  @apply border-t md:border-t-0 md:border-l border-gray-300;
+}
+
+.label {
+  @apply mr-2 font-semibold;
+}
+
+.button {
+  @apply mx-4 mt-4 px-6 py-2 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all flex items-center;
+}
+
+.button-loading {
+  @apply bg-blue-300;
+}
+
+.button-normal {
+  @apply bg-blue-500 hover:bg-blue-600;
+}
+
+.spinner {
+  @apply animate-spin h-5 w-5 mr-3 text-white;
+}
+
+.heading {
+  @apply text-xl font-bold mb-4;
+}
+
+.heading-margin {
+  @apply mt-8 mb-4;
+}
+
+.idea-card-container {
+  @apply flex justify-between items-center;
+}
+
+.remove-button {
+  @apply text-red-500 hover:text-red-700;
 }
